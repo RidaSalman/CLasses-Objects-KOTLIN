@@ -1,5 +1,4 @@
-import com.sun.tools.attach.AgentInitializationException
-import kotlin.time.times
+
 
 /*fun main (){
     val khyber = Car(name = "Khyber", type = "petrol", kmRan = 100)
