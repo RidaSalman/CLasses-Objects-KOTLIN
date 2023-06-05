@@ -434,3 +434,228 @@ fun main() {
 
 }*/
 //-----------------------------------THE END----------------------------------------------------------
+/*
+open class Parent{
+    init {
+        println("Parents Constructor is called")
+    }
+    val name : String = ""
+    fun mymethod(){
+        println("I am in Parent")
+    }
+}
+class Child : Parent(){
+    init {
+        println("Child Constructor is called")
+    }
+    val name2 : String = ""
+    fun mymethod2(){
+        println("I am in child")
+    }
+}
+
+fun main() {
+    val obj = Child()
+}*/
+//------------------------------------------------------------------------------------------------------
+/*open class Mobile (val type : String)
+{
+    open val name: String= ""
+    open val size :Int  = 5
+    fun makeCall() = println("Calling From Mobile")
+    fun poweroff() = println("Shutting Down")
+    open fun display() = println("Simple Mobile Display")
+}
+
+class Oneplus(type1 : String) : Mobile(type1){
+
+    override val name: String = "SDS"
+    override val size: Int =  10
+    override fun display() {
+        super.display()
+        println("One plus Display")
+    }
+
+    override fun toString(): String {
+        return "Name - $name - Size - $size"
+    }
+
+}
+fun main() {
+    val oneplus = Oneplus("fsfsfs")
+    oneplus.display()
+    println("Name  = ${oneplus.name}")
+    val mob = Mobile("sdfsf")
+    mob.display()
+    println(oneplus.toString())
+}*/
+//---------------------------------------Inheritence-------------------------------------------\
+/*
+open class Shape(val color : String){
+
+    open fun draw() = println("Drawing a shape with color : $color")
+
+}
+class Circle(color : String, val radius : Double): Shape(color){
+     override fun draw() = println("Drawing a circle with radius $radius and color $color")
+
+}
+class Rectangle(color : String,val width : Double, val height : Double) : Shape(color){
+    override fun draw() = println("Drawing a rectangle with width $width, height $height, and color $color")
+}
+
+class Triangle(color : String,val base : Int, val height : Double) : Shape(color){
+    override fun draw() = println("Drawing a triangle with base $base, height $height, and color $color")
+
+}
+fun main(){
+    val obj = Shape("Purple")
+    obj.draw()
+    val obj1 = Circle("adsa", 4.5)
+    obj1.draw()
+    val obj2 = Rectangle("fs", 5.5, 4.5)
+    obj2.draw()
+    val obj3 = Triangle("adad", 5, 3.5)
+    obj3.draw()
+}*/
+//--------------------------------Inheritence-------------------------------------------
+/*
+open class Vehicle(val make : String, val model : String, val year : Int ){
+    fun start() = println("Starting the vehicle")
+
+}
+
+class Car(make : String,model : String,year : Int, val numDoors : Int ) : Vehicle(make, model, year){
+    fun drive() = println("Driving the car with $numDoors doors")
+
+}
+
+class MotarCycle(make : String,model : String,year : Int, val hasSidecar : Boolean ) : Vehicle(make, model, year){
+    fun ride() = println("Riding the motorcycle" + if (hasSidecar) "with a sidecar" else "")
+
+}
+fun main(){
+    val obj = Car("toyota", "camry", 2021 , 5)
+    obj.start()
+    obj.drive()
+    val obj1 = MotarCycle("toyota", "camry", 2021 , true)
+    obj1.start()
+    obj1.ride()
+}*/
+//---------------------Initialization without Primary Constructor----------------------------------------------------------------------------
+/*
+open class Animal{
+    var name : String = ""
+    var age : Int = 0
+    constructor(name: String, age: Int){
+        this.name = name
+        this.age = age
+    }
+
+    open fun eat() = println("the animal is eating")
+}
+
+class Dog : Animal{
+    var breed: String = ""
+    constructor(name: String, age: Int, breed : String) : super(name, age){
+        this.breed = breed
+    }
+
+    override fun eat() =  println("The dog is eating")
+
+}
+class Cat : Animal{
+    var color: String = ""
+    constructor(name: String, age: Int, color : String) : super(name, age){
+        this.color = color
+    }
+
+    override fun eat() =  println("The cat is eating")
+
+}
+*/
+
+fun main(){
+//    val animal = Animal("sff", 34)
+//    animal.eat()
+//    val dog = Dog("Dog", 3, "Labrador")
+//    dog.eat()
+//    val cat = Cat("Cat", 2, "Orange")
+//    cat.eat()
+    val mehran = Child()
+    mehran.color("WHITE")
+    mehran.engine("1000")
+    mehran.showDetail()
+}
+//------------------------------------Inheritence with getter and Setter--------------------------
+open class Person(var name : String, var age : Int){
+
+    var age1 : Int
+        get() = age
+        set(value) {
+            if (value >=0){
+                age =  value
+            }
+        }
+
+}
+class Employee(name: String, age: Int, var salary : Int) : Person(name, age){
+    var salary1 : Int
+        get() = salary
+        set(value) {
+            if(value>=0){
+                salary = value
+            }
+        }
+
+}
+//class Student(name: String, age: Int) : Person(name, age){
+//    var grade : String = ""
+//        set(value) {
+//            if (value in 0..100) {
+//                field = value
+//            } else {
+//                throw IllegalArgumentException("Grade must be between 0 and 100")
+//            }
+//        }
+//    fun getGrade(): String {
+//        return grade
+//    }
+//}
+
+abstract class Vehicle {
+
+    abstract fun color(color: String)
+    abstract fun engine(power: String)
+}
+
+open class Engine {
+
+    var power: String = ""
+    fun horsePower(power: String){
+        this.power = power
+    }
+}
+
+class Child: Vehicle()  {
+
+    var engine: Engine? = null
+    var color: String = ""
+
+
+    override fun color(color: String) {
+        this.color = color
+    }
+
+    override fun engine(power: String) {
+        engine = Engine()
+        engine?.horsePower(power)
+    }
+
+    fun showDetail() {
+        println("Color: $color - Power: ${engine?.power}")
+    }
+
+
+}
+//--------------------------------------------------------------------------------------
